@@ -85,7 +85,11 @@ PlasmoidItem {
             }
             onNewWindowRequested: request => {
                 if (request.userInitiated) {
-                    Qt.openUrlExternally(request.requestedUrl);
+                    if (request.requestedUrl.toString().indexOf("messages.google.com/web") > -1) {
+                        webview.url = request.requestedUrl;
+                    } else {
+                        Qt.openUrlExternally(request.requestedUrl);
+                    }
                 }
             }
         }
