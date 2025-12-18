@@ -36,7 +36,7 @@ PlasmoidItem {
                 property var webNotification
                 componentName: "plasma_workspace"
                 eventId: "notification"
-                iconName: "im-google"
+                iconName: "dialog-messages.svg"
                 autoDelete: true
                 actions: [
                     NotificationAction {
