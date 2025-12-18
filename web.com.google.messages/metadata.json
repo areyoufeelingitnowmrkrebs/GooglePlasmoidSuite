@@ -1,0 +1,12 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Name": "Google Messages",
+        "Id": "web.com.google.messages",
+        "Description": "Google Messages for Web with notifications - right in your panel.",
+        "Icon": "im-google.svg",
+        "Category": "Online Services",
+        "License": "GPL-2.0+"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}
