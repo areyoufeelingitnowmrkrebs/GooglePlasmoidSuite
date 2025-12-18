@@ -17,7 +17,7 @@ Item {
             property var webNotification
             componentName: "plasma_workspace"
             eventId: "notification"
-            iconName: "im-google"
+            iconName: "view-calendar.svg"
             autoDelete: true
             actions: [
                 NotificationAction {
