@@ -26,7 +26,7 @@ PlasmoidItem {
         }
     }
     fullRepresentation: Item {
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 61
+        Layout.preferredWidth: Kirigami.Units.gridUnit * 62
         Layout.preferredHeight: Kirigami.Units.gridUnit * 49
         Plasmoid.backgroundHints: Plasmoid.StandardBackground
         WebEngineView {
