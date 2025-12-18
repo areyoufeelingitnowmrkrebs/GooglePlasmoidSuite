@@ -66,7 +66,11 @@ Item {
         }
         onNewWindowRequested: request => {
             if (request.userInitiated) {
-                Qt.openUrlExternally(request.requestedUrl);
+                if (request.requestedUrl.toString().indexOf("calendar.google.com") > -1) {
+                    webview.url = request.requestedUrl;
+                } else {
+                    Qt.openUrlExternally(request.requestedUrl);
+                }
             }
         }
     }
