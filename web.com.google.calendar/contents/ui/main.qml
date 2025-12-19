@@ -14,16 +14,13 @@ PlasmoidItem {
     id: root;
     width: Kirigami.Units.gridUnit * 10;
     height: Kirigami.Units.gridUnit * 4;
-
     Plasmoid.backgroundHints: PlasmaCore.Types.ShadowBackground | PlasmaCore.Types.ConfigurableBackground;
-
     toolTipItem: Local.Tooltip { }
-
     readonly property string dateFormatString: setDateFormatString();
-
     preferredRepresentation: compactRepresentation;
-    fullRepresentation: Calendar {}
-
+    fullRepresentation: Calendar {
+        onRequestExpand: root.expanded = true
+    }
     compactRepresentation: Loader {
         id: compactLoader
         Layout.minimumWidth: item.Layout.minimumWidth;
@@ -34,7 +31,6 @@ PlasmoidItem {
         Layout.maximumHeight: item.Layout.maximumHeight;
         sourceComponent: digitalClockComponent;
     }
-
     Component {
         id: digitalClockComponent;
         Clock {
@@ -44,9 +40,7 @@ PlasmoidItem {
             dataSource: dataSource
         }
     }
-
     hideOnWindowDeactivate: !Plasmoid.configuration.pin;
-
     P5Support.DataSource {
         id: dataSource;
         engine: "time";
@@ -60,7 +54,6 @@ PlasmoidItem {
             }
         }
     }
-
     function setDateFormatString() {
         let format = Qt.locale().dateFormat(Locale.LongFormat);
         format = format.replace(/(^dddd.?\s)|(,?\sdddd$)/, "");
