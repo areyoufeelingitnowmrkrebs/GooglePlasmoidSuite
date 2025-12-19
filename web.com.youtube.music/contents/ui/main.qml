@@ -41,17 +41,14 @@ PlasmoidItem {
                 allowRunningInsecureContent: false
                 accelerated2dCanvasEnabled: true
                 webGLEnabled: true
+                showScrollBars: false
             }
             onPermissionRequested: permission => {
                 permission.deny();
             }
             onNewWindowRequested: request => {
                 if (request.userInitiated) {
-                    if (request.requestedUrl.toString().indexOf("music.youtube.com") > -1) {
-                        webview.url = request.requestedUrl;
-                    } else {
-                        Qt.openUrlExternally(request.requestedUrl);
-                    }
+                    Qt.openUrlExternally(request.requestedUrl);
                 }
             }
         }
