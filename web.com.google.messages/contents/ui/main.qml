@@ -75,6 +75,7 @@ PlasmoidItem {
                 allowRunningInsecureContent: false
                 accelerated2dCanvasEnabled: true
                 webGLEnabled: true
+                showScrollBars: false
             }
             onPermissionRequested: permission => {
                 if (permission.permissionType === WebEnginePermission.PermissionType.Notifications) {
@@ -85,11 +86,7 @@ PlasmoidItem {
             }
             onNewWindowRequested: request => {
                 if (request.userInitiated) {
-                    if (request.requestedUrl.toString().indexOf("messages.google.com/web") > -1) {
-                        webview.url = request.requestedUrl;
-                    } else {
-                        Qt.openUrlExternally(request.requestedUrl);
-                    }
+                    Qt.openUrlExternally(request.requestedUrl);
                 }
             }
         }
