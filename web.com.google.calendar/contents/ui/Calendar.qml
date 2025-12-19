@@ -7,7 +7,7 @@ import org.kde.notification
 
 Item {
     id: root
-    Layout.preferredWidth: Kirigami.Units.gridUnit * 200
+    Layout.preferredWidth: Kirigami.Units.gridUnit * 90
     Layout.preferredHeight: Kirigami.Units.gridUnit * 49
     Plasmoid.backgroundHints: Plasmoid.StandardBackground
     Component {
@@ -56,6 +56,7 @@ Item {
             allowRunningInsecureContent: false
             accelerated2dCanvasEnabled: true
             webGLEnabled: true
+            showScrollBars: false
         }
         onPermissionRequested: permission => {
             if (permission.permissionType === WebEnginePermission.PermissionType.Notifications) {
@@ -66,11 +67,7 @@ Item {
         }
         onNewWindowRequested: request => {
             if (request.userInitiated) {
-                if (request.requestedUrl.toString().indexOf("calendar.google.com") > -1) {
-                    webview.url = request.requestedUrl;
-                } else {
-                    Qt.openUrlExternally(request.requestedUrl);
-                }
+                Qt.openUrlExternally(request.requestedUrl);
             }
         }
     }
