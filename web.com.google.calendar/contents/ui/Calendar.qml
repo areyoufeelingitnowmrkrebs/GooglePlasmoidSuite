@@ -7,6 +7,7 @@ import org.kde.notification
 
 Item {
     id: root
+    signal requestExpand()
     Layout.preferredWidth: Kirigami.Units.gridUnit * 69
     Layout.preferredHeight: Kirigami.Units.gridUnit * 49
     Plasmoid.backgroundHints: Plasmoid.StandardBackground
@@ -24,7 +25,7 @@ Item {
                     id: openAction
                     label: "Open"
                     onActivated: {
-                        Plasmoid.expanded = true
+                        root.requestExpand()
                         if (internalNotification.webNotification) {
                             internalNotification.webNotification.click()
                         }
