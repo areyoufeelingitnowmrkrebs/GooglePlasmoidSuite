@@ -84,6 +84,17 @@ PlasmoidItem {
                 }
             }
             onNewWindowRequested: request => {
+                var urlStr = request.requestedUrl.toString();
+                if (urlStr.indexOf("mail.google.com") >= 0 && urlStr.indexOf("/popout") >= 0) {
+                    var match = urlStr.match(/th=(%23|#)([^&]+)/);
+                    if (match) {
+                        var threadId = decodeURIComponent(match[2]);
+                        var baseUrl = urlStr.split("/popout")[0];
+                        var newUrl = baseUrl + "/#inbox/" + threadId;
+                        webview.url = newUrl;
+                        return;
+                    }
+                }
                 if (request.userInitiated) {
                     Qt.openUrlExternally(request.requestedUrl);
                 }
