@@ -26,7 +26,7 @@ PlasmoidItem {
         }
     }
     fullRepresentation: Item {
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 200
+        Layout.preferredWidth: Kirigami.Units.gridUnit * 69
         Layout.preferredHeight: Kirigami.Units.gridUnit * 49
         Plasmoid.backgroundHints: Plasmoid.StandardBackground
         Component {
@@ -40,7 +40,6 @@ PlasmoidItem {
                 autoDelete: true
                 actions: [
                     NotificationAction {
-                        id: openAction
                         label: "Open"
                         onActivated: {
                             root.expanded = true
@@ -75,6 +74,7 @@ PlasmoidItem {
                 allowRunningInsecureContent: false
                 accelerated2dCanvasEnabled: true
                 webGLEnabled: true
+                showScrollBars: false
             }
             onPermissionRequested: permission => {
                 if (permission.permissionType === WebEnginePermission.PermissionType.Notifications) {
@@ -85,11 +85,7 @@ PlasmoidItem {
             }
             onNewWindowRequested: request => {
                 if (request.userInitiated) {
-                    if (request.requestedUrl.toString().indexOf("mail.google.com") > -1) {
-                        webview.url = request.requestedUrl;
-                    } else {
-                        Qt.openUrlExternally(request.requestedUrl);
-                    }
+                    Qt.openUrlExternally(request.requestedUrl);
                 }
             }
         }
