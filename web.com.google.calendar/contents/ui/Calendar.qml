@@ -7,7 +7,7 @@ import org.kde.notification
 
 Item {
     id: root
-    Layout.preferredWidth: Kirigami.Units.gridUnit * 90
+    Layout.preferredWidth: Kirigami.Units.gridUnit * 69
     Layout.preferredHeight: Kirigami.Units.gridUnit * 49
     Plasmoid.backgroundHints: Plasmoid.StandardBackground
     Component {
